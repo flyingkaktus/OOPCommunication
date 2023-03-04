@@ -56,7 +56,7 @@ public class ClientHandler implements Runnable {
                 } else {
                     System.out.println(
                             "Message from: " + messageFromClient.getSenderName() + " with message: "
-                                    + messageFromClient.toString() + " to " + messageFromClient.getReceiverName()
+                                    + messageFromClient.getMessage() + " to " + messageFromClient.getReceiverName()
                                     + " received.");
                     messageStoragePending.add(messageFromClient);
                 }
@@ -68,7 +68,7 @@ public class ClientHandler implements Runnable {
             System.out.println("End of File");
         } catch (SocketException e) {
             if (e.getMessage().equals("Connection reset")) {
-                System.err.println("Verbindung zum Server wurde zurückgesetzt.");
+                System.err.println("Connection to the server was reset.");
             } else {
                 System.err.println("SocketException aufgetreten: " + e.getMessage());
             }

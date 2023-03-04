@@ -78,7 +78,7 @@ public abstract class Client implements Runnable {
                 try {
                     if (messageFromServer != null) {
                         if (messageFromServer.getMessage().equals("IDENTIFICATION_REQUEST")) {
-                            System.out.println("Got identification request from server.");
+                            System.out.println("\nGot identification request from server.");
                             send(name, "SERVER_RESPONSE");
                         }
                         reaction(messageFromServer);
