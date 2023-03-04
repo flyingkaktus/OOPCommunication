@@ -36,25 +36,6 @@ public class TCPServer implements Runnable {
         return firstInstance;
     }
 
-    public void sendPendingMessages2() {
-        for (ClientHandler clientHandler : clientHandlers) {
-            for (Message message : clientHandler.messageStoragePending) {
-                for (ClientHandler clientHandler2 : clientHandlers) {
-                    if (clientHandler2.getName().equals(message.getReceiverName())) {
-                        try {
-                            clientHandler2.objectOutputStream.writeObject(message);
-                            clientHandler2.objectOutputStream.flush();
-                            clientHandler.messageStoragePending.remove(message);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            System.out.println("Failed to send message to " + message.getReceiverName());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public void sendPendingMessages() {
         for (ClientHandler clientHandler : clientHandlers) {
             Iterator<Message> messageStoragePending = clientHandler.messageStoragePending.iterator();

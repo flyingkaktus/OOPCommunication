@@ -1,4 +1,4 @@
 .vscode
 simple-player/target/
 simple-message/target/
-simple-server/target/
+simple-tcpserver/target/
